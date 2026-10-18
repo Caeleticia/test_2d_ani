@@ -3,47 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2d_ani</title>
+    <title>Live2D Naming - 可动纸片人</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- 人物舞台 -->
+    <!-- 舞台容器 -->
     <div id="stage">
-        <!-- 基础 -->
-        <img src="assets/images/hair/hair-back.png" class="layer" id="hair-back" alt="后发">
-        <img src="assets/images/base/body.png" class="layer" id="body" alt="身体">
-        <img src="assets/images/clothes/skirt.png" class="layer" id="skirt" alt="下装">
-        <img src="assets/images/clothes/top.png" class="layer" id="top" alt="上衣">
-        <img src="assets/images/base/face.png" class="layer" id="face" alt="脸型">
+        <!-- ================= 基础后层 ================= -->
+        <img src="assets/chara/default/hair_back.png" class="layer" id="hair_back" alt="后发">
+        <img src="assets/chara/default/body.png" class="layer" id="body" alt="身体">
+        <img src="assets/chara/default/skirt.png" class="layer" id="skirt" alt="裙子">
+        <img src="assets/chara/default/top.png" class="layer" id="top" alt="上衣">
         
-        <!-- 五官 -->
-        <img src="assets/images/features/eyes.png" class="layer" id="eyes" alt="眼睛">
-        <img src="assets/images/features/eyebrows.png" class="layer" id="eyebrows" alt="眉毛">
-        <img src="assets/images/features/mouth.png" class="layer" id="mouth" alt="嘴巴">
+        <!-- ================= 脸部与五官 ================= -->
+        <img src="assets/chara/default/face.png" class="layer" id="face" alt="脸型">
         
-        <!-- 前发 -->
-        <img src="assets/images/hair/hair-front.png" class="layer" id="hair-front" alt="前发">
+        <!-- 左眼、右眼（如果你没有单独切图，可以直接指向同一张图，甚至用 CSS 处理） -->
+        <img src="assets/chara/default/eye_ball_L.png" class="layer feature-eye" id="eye_ball_L" alt="左眼">
+        <img src="assets/chara/default/eye_ball_R.png" class="layer feature-eye" id="eye_ball_R" alt="右眼">
+        
+        <img src="assets/chara/default/brow_L.png" class="layer feature-brow" id="brow_L" alt="左眉">
+        <img src="assets/chara/default/brow_R.png" class="layer feature-brow" id="brow_R" alt="右眉">
+        
+        <img src="assets/chara/default/mouth.png" class="layer" id="mouth" alt="嘴巴">
+        
+        <!-- ================= 前发 ================= -->
+        <img src="assets/chara/default/hair_front.png" class="layer" id="hair_front" alt="前发">
 
-        <!-- 手臂 (由JS动态控制) -->
-        <img src="assets/images/arms/arm-0.png" class="layer arm-layer active" id="arm-0" alt="双手下垂">
-        <img src="assets/images/arms/arm-1.png" class="layer arm-layer" id="arm-1" alt="动作1">
-        <img src="assets/images/arms/arm-2.png" class="layer arm-layer" id="arm-2" alt="动作2">
-        <img src="assets/images/arms/arm-3.png" class="layer arm-layer" id="arm-3" alt="动作3">
+        <!-- ================= 手臂与动作（通过JS控制） ================= -->
+        <!-- 默认显示自然下垂的手臂 -->
+        <img src="assets/chara/default/arm_lower_L.png" class="layer arm-layer active" id="arm_lower_L" alt="左手下垂">
+        <img src="assets/chara/default/arm_lower_R.png" class="layer arm-layer active" id="arm_lower_R" alt="右手下垂">
         
-        <!-- 配套袖子 (默认隐藏，跟随特定动作显示) -->
-        <img src="assets/images/arms/sleeve-3.png" class="layer arm-layer" id="sleeve-3" alt="袖子3">
+        <!-- 隐藏的备用动作 -->
+        <img src="assets/chara/default/arm_upper_R.png" class="layer arm-layer" id="arm_upper_R" alt="右手扬起">
+        <img src="assets/chara/default/arm_lower_R_open.png" class="layer arm-layer" id="arm_lower_R_open" alt="右手张开">
+        <img src="assets/chara/default/arm_upper_L_bend.png" class="layer arm-layer" id="arm_upper_L_bend" alt="左手弯曲">
+        <img src="assets/chara/default/sleeve_upper_L.png" class="layer arm-layer" id="sleeve_upper_L" alt="左手袖子">
     </div>
 
     <!-- 控制面板 -->
     <div class="controls">
-        <button onclick="changeArm(0)">默认站立</button>
-        <button onclick="changeArm(1)">动作1 (后摆)</button>
-        <button onclick="changeArm(2)">动作2 (打招呼)</button>
-        <button onclick="changeArm(3)">动作3 (叉腰)</button>
+        <button onclick="setArmAction('default')">默认站立</button>
+        <button onclick="setArmAction('wave')">招手 (举右手)</button>
+        <button onclick="setArmAction('hands_on_hips')">叉腰 (左手)</button>
+        <button onclick="toggleBlink()">开启/关闭眨眼</button>
     </div>
 
-    <!-- 引入JS -->
-    <script src="js/arm-controller.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
