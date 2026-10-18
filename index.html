@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2d_ani</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 人物舞台 -->
+    <div id="stage">
+        <!-- 基础 -->
+        <img src="assets/images/hair/hair-back.png" class="layer" id="hair-back" alt="后发">
+        <img src="assets/images/base/body.png" class="layer" id="body" alt="身体">
+        <img src="assets/images/clothes/skirt.png" class="layer" id="skirt" alt="下装">
+        <img src="assets/images/clothes/top.png" class="layer" id="top" alt="上衣">
+        <img src="assets/images/base/face.png" class="layer" id="face" alt="脸型">
+        
+        <!-- 五官 -->
+        <img src="assets/images/features/eyes.png" class="layer" id="eyes" alt="眼睛">
+        <img src="assets/images/features/eyebrows.png" class="layer" id="eyebrows" alt="眉毛">
+        <img src="assets/images/features/mouth.png" class="layer" id="mouth" alt="嘴巴">
+        
+        <!-- 前发 -->
+        <img src="assets/images/hair/hair-front.png" class="layer" id="hair-front" alt="前发">
+
+        <!-- 手臂 (由JS动态控制) -->
+        <img src="assets/images/arms/arm-0.png" class="layer arm-layer active" id="arm-0" alt="双手下垂">
+        <img src="assets/images/arms/arm-1.png" class="layer arm-layer" id="arm-1" alt="动作1">
+        <img src="assets/images/arms/arm-2.png" class="layer arm-layer" id="arm-2" alt="动作2">
+        <img src="assets/images/arms/arm-3.png" class="layer arm-layer" id="arm-3" alt="动作3">
+        
+        <!-- 配套袖子 (默认隐藏，跟随特定动作显示) -->
+        <img src="assets/images/arms/sleeve-3.png" class="layer arm-layer" id="sleeve-3" alt="袖子3">
+    </div>
+
+    <!-- 控制面板 -->
+    <div class="controls">
+        <button onclick="changeArm(0)">默认站立</button>
+        <button onclick="changeArm(1)">动作1 (后摆)</button>
+        <button onclick="changeArm(2)">动作2 (打招呼)</button>
+        <button onclick="changeArm(3)">动作3 (叉腰)</button>
+    </div>
+
+    <!-- 引入JS -->
+    <script src="js/arm-controller.js"></script>
+</body>
+</html>
